@@ -9,7 +9,7 @@ export default function Loja() {
     if (nomeDaLoja) {
       router.push(`/pedido/cardapio?loja=${nomeDaLoja}`);
     }
-  }, [nomeDaLoja]);
+  }, [router, nomeDaLoja]);
 
   return <></>
 }
