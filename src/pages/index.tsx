@@ -1,7 +1,14 @@
+import Link from "next/link";
+
 export default function home() {
   return (
     <main>
-      Tato - alterado 1
-    </main>
+      <div>
+        <Link href={"loja/boteco-da-peh"}>Boteco da Peh</Link>
+      </div>
+      <div>
+        <Link href={"loja/hajime-limao"}>Hajime Limao</Link>
+      </div>
+    </main >
   )
 }
