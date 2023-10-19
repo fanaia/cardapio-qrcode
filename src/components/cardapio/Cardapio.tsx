@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { useRouter } from 'next/router';
 
 import Categoria from "./Categoria";
 import CategoriaInterface from "@/interfaces/CategoriaInterface";
-import { usePedidos } from "@/contexts/PedidoContext";
 
 const listaCategorias: CategoriaInterface[] = [
   {
@@ -52,14 +50,7 @@ const listaCategorias: CategoriaInterface[] = [
 ];
 
 export default function Cardapio() {
-  const router = useRouter();
-  const { quantidadeTotalProdutos } = usePedidos();
   const [categorias] = useState(listaCategorias);
-  const quantidade = quantidadeTotalProdutos();
-
-  const handlePedir = () => {
-    router.push('/pedido/confirmar');
-  }
 
   return (
     <div className="pb-16">
@@ -68,17 +59,6 @@ export default function Cardapio() {
           <Categoria key={index} categoria={categoria} />
         ))}
       </div>
-      <div className="fixed left-1 right-1 bottom-1">
-        <button
-          className="p-3 w-full text-lg text-white text-center rounded-md bg-blue-500"
-          disabled={quantidade === 0}
-          onClick={handlePedir}>
-          <div>
-            <span className="mr-3">Pedir</span>
-            <span className="text-sm">{quantidade} {quantidade <= 1 ? "item" : "itens"}</span>
-          </div>
-        </button >
-      </div >
     </div >
   )
 }
