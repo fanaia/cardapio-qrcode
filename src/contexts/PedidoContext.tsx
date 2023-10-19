@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import PedidoInterface, { ProdutoPedidoInterface } from '@/interfaces/PedidoInterface';
+import PedidoInterface from '@/interfaces/PedidoInterface';
 import ProdutoInterface from '@/interfaces/ProdutoInterface';
 
 interface PedidoContextType {

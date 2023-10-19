@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useRouter } from 'next/router';
 
 import Cardapio from '@/components/cardapio/Cardapio';
-import { PedidoProvider, usePedidos } from '@/contexts/PedidoContext';
+import { usePedidos } from '@/contexts/PedidoContext';
 
 export default function CardapioPage() {
   const router = useRouter();
+  const { loja } = router.query;
+
   const { quantidadeTotalProdutos } = usePedidos();
   const quantidade = quantidadeTotalProdutos();
 
@@ -17,7 +19,7 @@ export default function CardapioPage() {
     <main>
       <div>
         <div className='grid grid-cols-2 gap-4 p-6'>
-          <div className='col-span-1 text-left'>Boteco da Peh</div>
+          <div className='col-span-1 text-left'>{loja}</div>
           <div className='col-span-1 text-right'>ABERTO</div>
         </div>
         <div>
