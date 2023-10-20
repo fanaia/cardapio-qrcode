@@ -21,7 +21,7 @@ export default function Categoria({ categoria }: CategoriaProps) {
       return p.categorias?.some((c) => c.nome === categoria.nome)
     })
 
-    return _produtos;
+    return _produtos || null;
   }
 
   return (
