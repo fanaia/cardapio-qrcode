@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useLoja } from '@/contexts/LojaContext';
 
 export default function Loja() {
   const router = useRouter();
   const { nomeLoja } = router.query;
-  const { carregarLoja } = useLoja();
+  const { carregarLoja, loja } = useLoja();
 
   useEffect(() => {
-    if (nomeLoja) {
+    if (nomeLoja && !loja) {
       const _nomeLoja: string = Array.isArray(nomeLoja) ? nomeLoja[0] : nomeLoja; // Escolhe o primeiro elemento se for um array
       const lojaCarregada: boolean = carregarLoja(_nomeLoja);
 
@@ -16,7 +16,7 @@ export default function Loja() {
         router.push('/pedido/cardapio');
       }
     }
-  }, [nomeLoja]);
+  }, [router, nomeLoja, loja, carregarLoja]);
 
   return <></>
 }
