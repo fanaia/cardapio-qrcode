@@ -1,11 +1,11 @@
 import React, { useState } from "react"
-import ProdutoInterface from "@/interfaces/ProdutoInterface"
+import ProdutoType from "@/types/ProdutoType"
 import { IconMinus, IconPlus } from "@tabler/icons-react";
 
 import { usePedidos } from '@/contexts/PedidoContext';
 
 interface ProdutoProps {
-  produto: ProdutoInterface;
+  produto: ProdutoType;
 }
 
 export default function Produto(props: ProdutoProps) {

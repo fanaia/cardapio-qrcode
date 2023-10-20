@@ -3,10 +3,11 @@ import { useRouter } from 'next/router';
 
 import Cardapio from '@/components/cardapio/Cardapio';
 import { usePedidos } from '@/contexts/PedidoContext';
+import { useLoja } from "@/contexts/LojaContext";
 
 export default function CardapioPage() {
   const router = useRouter();
-  const { loja } = router.query;
+  const { loja } = useLoja();
 
   const { quantidadeTotalProdutos } = usePedidos();
   const quantidade = quantidadeTotalProdutos();
@@ -19,8 +20,8 @@ export default function CardapioPage() {
     <main>
       <div>
         <div className='grid grid-cols-2 gap-4 p-6'>
-          <div className='col-span-1 text-left'>{loja}</div>
-          <div className='col-span-1 text-right'>ABERTO</div>
+          <div className='col-span-1 text-left'>{loja?.nome}</div>
+          <div className='col-span-1 text-right'>{loja?.abertaPedidosOnline}</div>
         </div>
         <div>
           <Cardapio />

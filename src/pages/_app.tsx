@@ -1,10 +1,16 @@
-import { PedidoProvider } from '@/contexts/PedidoContext'
-import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
+
+import '@/styles/globals.css'
+
+import { LojaProvider } from '@/contexts/LojaContext'
+import { PedidoProvider } from '@/contexts/PedidoContext'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <PedidoProvider>
-      <Component {...pageProps} />
-    </PedidoProvider>)
+    <LojaProvider>
+      <PedidoProvider>
+        <Component {...pageProps} />
+      </PedidoProvider>
+    </LojaProvider>
+  )
 }

@@ -1,13 +1,13 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import PedidoInterface from '@/interfaces/PedidoInterface';
-import ProdutoInterface from '@/interfaces/ProdutoInterface';
+import PedidoType from '@/types/PedidoType';
+import ProdutoType from '@/types/ProdutoType';
 
 interface PedidoContextType {
-  pedido: PedidoInterface | undefined;
+  pedido: PedidoType | undefined;
   quantidadeTotalProdutos: () => number;
   quantidadeProduto: (produtoID: string) => number;
-  adicionarProduto: (produto: ProdutoInterface, quantidade: number) => void;
-  removerProduto: (produto: ProdutoInterface, quantidade: number) => void;
+  adicionarProduto: (produto: ProdutoType, quantidade: number) => void;
+  removerProduto: (produto: ProdutoType, quantidade: number) => void;
 }
 
 const PedidoContext = createContext<PedidoContextType | undefined>(undefined);
@@ -25,7 +25,7 @@ interface PedidoProviderProps {
 }
 
 export function PedidoProvider({ children }: PedidoProviderProps) {
-  const [pedido, setPedido] = useState<PedidoInterface>();
+  const [pedido, setPedido] = useState<PedidoType>();
 
   const quantidadeTotalProdutos = (): number => {
     if (pedido) {
@@ -45,10 +45,10 @@ export function PedidoProvider({ children }: PedidoProviderProps) {
     return 0
   }
 
-  const adicionarProduto = (produto: ProdutoInterface, quantidade: number) => {
+  const adicionarProduto = (produto: ProdutoType, quantidade: number) => {
     if (!pedido) {
       // Se não houver um pedido, crie um novo
-      const novoPedido: PedidoInterface = {
+      const novoPedido: PedidoType = {
         // Outros campos do pedido...
         produtos: [{ produto, quantidade }],
       };
@@ -72,7 +72,7 @@ export function PedidoProvider({ children }: PedidoProviderProps) {
     }
   };
 
-  const removerProduto = (produto: ProdutoInterface, quantidade: number) => {
+  const removerProduto = (produto: ProdutoType, quantidade: number) => {
     if (pedido) {
       // Verifique se o produto já está no pedido
       const produtoExistente = pedido.produtos.find(
