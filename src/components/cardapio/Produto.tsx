@@ -14,7 +14,7 @@ export default function Produto(props: ProdutoProps) {
   const [confirmar, setConfirmar] = useState(false);
   const [observacao, setObservacao] = useState("")
 
-  const quantidade = quantidadeProduto(props.produto.produtoID);
+  const quantidade = quantidadeProduto(props.produto.produtoID || "");
 
   const handleRemoverProduto = () => {
     removerProduto(props.produto, 1);
